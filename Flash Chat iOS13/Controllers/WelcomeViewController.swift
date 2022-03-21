@@ -14,9 +14,19 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+        runTitleAnimation()
     }
     
+    func runTitleAnimation() {
+        let initialTitle = titleLabel.text!
+        titleLabel.text = ""
+
+        for (index, letter) in initialTitle.enumerated() {
+            let interval = Double(index) * 0.1
+            Timer.scheduledTimer(withTimeInterval: interval, repeats: false) { timer in
+                self.titleLabel.text?.append(letter)
+            }
+        }
+    }
 
 }
